@@ -64,12 +64,12 @@ public class Weather {
     @JsonProperty("pollen_level_grass")
     private Integer pollen_level_grass;
 
-
-
     @JsonProperty("city_name")
     public String getCity_name() {
         return city_name;
     }
+
+
 
     @JsonProperty("city_name")
     public void setCity_name(String city_name) {
@@ -194,5 +194,24 @@ public class Weather {
     @JsonProperty("pollen_level_grass")
     public void setPollen_level_grass(Integer pollen_level_grass) {
         this.pollen_level_grass = pollen_level_grass;
+    }
+
+    @Override
+    public String toString() {
+        return "Weather{" +
+                "city_name='" + city_name + '\'' +
+                ", mold_level=" + mold_level +
+                ", aqi=" + aqi +
+                ", pm10=" + pm10 +
+                ", co=" + co +
+                ", o3=" + o3 +
+                ", predominant_pollen_type='" + predominant_pollen_type + '\'' +
+                ", so2=" + so2 +
+                ", pollen_level_tree=" + pollen_level_tree +
+                ", pollen_level_weed=" + pollen_level_weed +
+                ", no2=" + no2 +
+                ", pm25=" + pm25 +
+                ", pollen_level_grass=" + pollen_level_grass +
+                '}';
     }
 }

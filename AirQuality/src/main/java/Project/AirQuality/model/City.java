@@ -17,7 +17,7 @@ import java.util.List;
         "country_code",
         "state_code"
 })
-public class Response {
+public class City {
 
     @JsonProperty("data")
     private java.util.List<Weather> data = null;

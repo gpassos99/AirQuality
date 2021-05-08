@@ -1,6 +1,5 @@
 package Project.AirQuality.controller;
-
-import Project.AirQuality.model.Response;
+import Project.AirQuality.model.City;
 import Project.AirQuality.model.Weather;
 import Project.AirQuality.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import java.util.Map;
 public class AirQualityController {
 
     @Autowired
-    private IService<Response> Service;
+    private IService<City> Service;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
@@ -31,8 +30,8 @@ public class AirQualityController {
     @RequestMapping(value = "/AirQuality/{city_name}", method = RequestMethod.GET)
     public String getAirQuality(Model model, @PathVariable("city_name") String city_name) throws Exception {
 
-        Response response = Service.getAirQuality(city_name);
-        List<Weather> data = response.getData();
+        City city = Service.getAirQuality(city_name);
+        List<Weather> data = city.getData();
 
         model.addAttribute("city_name", city_name);
         model.addAttribute("mold_level", level.get(data.get(0).getMold_level()));
@@ -61,7 +60,7 @@ public class AirQualityController {
         level.put(4, "Very High");
     }
 
-    @PostMapping("/choosecity")
+    @PostMapping("/citynavigation")
     public String showPage(@ModelAttribute("city") String city) {
         System.out.println(city);
         return "redirect:/AirQuality/"+city;
