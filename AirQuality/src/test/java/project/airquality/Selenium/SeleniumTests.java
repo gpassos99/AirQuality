@@ -1,10 +1,10 @@
-package Project.AirQuality.Selenium;
+package project.airquality.Selenium;
 
-import org.junit.After;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,18 +16,19 @@ class SeleniumTests {
     private Map<String, Object> vars;
     JavascriptExecutor js;
     @BeforeEach
-    public void setUp() {
-        driver = new ChromeDriver();
+    void setUp() {
+        System.setProperty("webdriver.gecko.driver", "/home/passos/Downloads/firefox/geckodriver");
+        driver = new FirefoxDriver();
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
     }
-    @After
-    public void tearDown() {
+    @AfterEach
+    void tearDown() {
         driver.quit();
     }
 
     @Test
-    public void airtest() {
+    void airtest() {
         System.out.println("Print Driver Path :- " + driver);
         driver.get("http://localhost:8080/AirQuality/Aveiro");
         driver.manage().window().setSize(new Dimension(945, 1027));

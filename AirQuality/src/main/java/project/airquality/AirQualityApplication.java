@@ -1,4 +1,4 @@
-package Project.AirQuality;
+package project.airquality;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package Project.AirQuality.model;
+package project.airquality.model;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;

@@ -1,11 +1,13 @@
-package Project.AirQuality.controller;
-import Project.AirQuality.model.City;
-import Project.AirQuality.model.Weather;
-import Project.AirQuality.service.IService;
+package project.airquality.controller;
+import project.airquality.model.City;
+import project.airquality.model.Weather;
+import project.airquality.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,17 +19,17 @@ public class AirQualityController {
     @Autowired
     private IService<City> Service;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/")
     public String index() {
         return "redirect:/AirQuality/Aveiro";
     }
 
-    @RequestMapping(value = "/AirQuality", method = RequestMethod.GET)
+    @GetMapping(value = "/AirQuality")
     public String airquality() {
         return "redirect:/AirQuality/Aveiro";
     }
 
-    @RequestMapping(value = "/AirQuality/{city_name}", method = RequestMethod.GET)
+    @GetMapping(value = "/AirQuality/{city_name}")
     public String getAirQuality(Model model, @PathVariable("city_name") String city_name) throws Exception {
 
         City city = Service.getAirQuality(city_name);
@@ -60,9 +62,12 @@ public class AirQualityController {
         level.put(4, "Very High");
     }
 
+    private static final Logger logger = Logger.getLogger( AirQualityController.class.getName() );
+
     @PostMapping("/citynavigation")
     public String showPage(@ModelAttribute("city") String city) {
-        System.out.println(city);
+        logger.log(Level.INFO, city);
+
         return "redirect:/AirQuality/"+city;
 
     }

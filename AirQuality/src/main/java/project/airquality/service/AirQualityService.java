@@ -1,6 +1,6 @@
-package Project.AirQuality.service;
+package project.airquality.service;
 
-import Project.AirQuality.model.City;
+import project.airquality.model.City;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
